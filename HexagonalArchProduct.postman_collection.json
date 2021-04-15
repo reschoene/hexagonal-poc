@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "2efac57c-1f59-456e-a611-7545fd052e9f",
+		"name": "HexagonalArchProduct",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/product/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"\",\n    \"code\": \"code 01\",\n    \"description\": \"jogo de cama king size\",\n    \"price\": 54.23,\n    \"brand\": \"mmartan\",\n    \"expirationDate\": \"\",\n    \"manufatoringDate\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"code\": \"code 01\",\n    \"description\": \"jogo de cama king size (updated)\",\n    \"price\": 54.23,\n    \"brand\": \"mmartan\",\n    \"expirationDate\": \"\",\n    \"manufatoringDate\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"2\",\n    \"code\": \"code 01\",\n    \"description\": \"jogo de cama king size (updated)\",\n    \"price\": 54.23,\n    \"brand\": \"mmartan\",\n    \"expirationDate\": \"\",\n    \"manufatoringDate\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
