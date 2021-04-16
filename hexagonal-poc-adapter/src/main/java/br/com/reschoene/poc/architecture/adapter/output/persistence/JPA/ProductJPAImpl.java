@@ -4,7 +4,9 @@ import br.com.reschoene.poc.port.repository.ProductRepositoryPort;
 import br.com.reschoene.poc.port.dto.ProductDto;
 import lombok.RequiredArgsConstructor;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -12,8 +14,12 @@ public class ProductJPAImpl implements ProductRepositoryPort {
     private final ProductJPARepository jpaRepository;
 
     @Override
-    public ProductDto getProductById(Long productId) {
-        return ProductEntity.toDto(jpaRepository.getOne(productId));
+    public Optional<ProductDto> getProductById(Long productId) {
+        var optEntity = jpaRepository.findById(productId);
+        if(optEntity.isPresent())
+            return Optional.of(ProductEntity.toDto(optEntity.get()));
+        else
+            return Optional.empty();
     }
 
     @Override
@@ -25,19 +31,20 @@ public class ProductJPAImpl implements ProductRepositoryPort {
     }
 
     @Override
-    public void addProduct(ProductDto productDto) {
+    public ProductDto addProduct(ProductDto productDto) {
         var entity = ProductEntity.fromDto(productDto);
-        jpaRepository.save(entity);
+        return ProductEntity.toDto(jpaRepository.save(entity));
     }
 
     @Override
-    public void removeProduct(ProductDto productDto) {
+    public ProductDto removeProduct(ProductDto productDto) {
         jpaRepository.deleteById(productDto.getId());
+        return productDto;
     }
 
     @Override
-    public void updateProduct(ProductDto productDto) {
+    public ProductDto updateProduct(ProductDto productDto) {
         var entity = ProductEntity.fromDto(productDto);
-        jpaRepository.save(entity);
+        return ProductEntity.toDto(jpaRepository.save(entity));
     }
 }

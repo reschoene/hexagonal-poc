@@ -3,15 +3,16 @@ package br.com.reschoene.poc.port.repository;
 import br.com.reschoene.poc.port.dto.ProductDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductRepositoryPort {
-    void addProduct(ProductDto productDto);
+    ProductDto addProduct(ProductDto productDto);
 
-    void removeProduct(ProductDto productDto);
+    ProductDto removeProduct(ProductDto productDto);
 
-    void updateProduct(ProductDto productDto);
+    ProductDto updateProduct(ProductDto productDto);
 
     List<ProductDto> getAllProducts();
 
-    ProductDto getProductById(Long productId);
+    Optional<ProductDto> getProductById(Long productId);
 }

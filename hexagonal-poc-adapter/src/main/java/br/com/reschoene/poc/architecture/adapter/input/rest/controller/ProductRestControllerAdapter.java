@@ -1,5 +1,7 @@
 package br.com.reschoene.poc.architecture.adapter.input.rest.controller;
 
+import br.com.reschoene.poc.architecture.adapter.input.rest.error.ResponseError;
+import br.com.reschoene.poc.port.exception.ProductNotFoundException;
 import br.com.reschoene.poc.port.dto.ProductDto;
 import br.com.reschoene.poc.port.input.service.ProductServicePort;
 import br.com.reschoene.poc.port.input.ui.ProductUIPort;
@@ -8,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -23,8 +24,8 @@ public class ProductRestControllerAdapter implements ProductUIPort {
         try {
             prod = productServicePort.getProductById(productId);
         }
-        catch (EntityNotFoundException e){
-            return new ResponseEntity<>("", HttpStatus.NO_CONTENT);
+        catch (ProductNotFoundException e){
+            return new ResponseEntity<>(new ResponseError(e.getMessage()), HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(prod, HttpStatus.OK);
     }
@@ -39,21 +40,29 @@ public class ProductRestControllerAdapter implements ProductUIPort {
     @Override
     @PostMapping("/product")
     public ResponseEntity<ProductDto> addProduct(@RequestBody ProductDto productDto) {
-        productServicePort.addProduct(productDto);
+        productDto = productServicePort.addProduct(productDto);
         return new ResponseEntity<>(productDto, HttpStatus.CREATED);
     }
 
     @Override
     @DeleteMapping("/product")
-    public ResponseEntity<ProductDto> removeProduct(@RequestBody ProductDto productDto) {
-        productServicePort.removeProduct(productDto);
+    public ResponseEntity<?> removeProduct(@RequestBody ProductDto productDto) {
+        try {
+            productDto = productServicePort.removeProduct(productDto);
+        } catch (ProductNotFoundException e) {
+            return new ResponseEntity<>(new ResponseError(e.getMessage()), HttpStatus.NO_CONTENT);
+        }
         return new ResponseEntity<>(productDto, HttpStatus.OK);
     }
 
     @Override
     @PutMapping("/product")
-    public ResponseEntity<ProductDto> updateProduct(@RequestBody ProductDto productDto) {
-        productServicePort.updateProduct(productDto);
+    public ResponseEntity<?> updateProduct(@RequestBody ProductDto productDto) {
+        try {
+            productDto = productServicePort.updateProduct(productDto);
+        } catch (ProductNotFoundException e) {
+            return new ResponseEntity<>(new ResponseError(e.getMessage()), HttpStatus.NO_CONTENT);
+        }
         return new ResponseEntity<>(productDto, HttpStatus.OK);
     }
 }
