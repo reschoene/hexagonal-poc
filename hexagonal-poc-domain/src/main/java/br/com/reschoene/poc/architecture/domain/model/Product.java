@@ -18,7 +18,7 @@ public class Product {
     private LocalDate manufacturingDate;
 
     public double getPrice(){
-        long daysBetween = ChronoUnit.DAYS.between(expirationDate, manufacturingDate);
+        long daysBetween = ChronoUnit.DAYS.between(manufacturingDate, expirationDate);
 
         double discountPerc = (daysBetween <= 5 ? 0.5 : 0.1);
 

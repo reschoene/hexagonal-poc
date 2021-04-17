@@ -7,9 +7,9 @@ import java.util.List;
 public interface ProductServicePort<T> {
     T addProduct(T product);
 
-    T removeProduct(T productDto) throws ProductNotFoundException;
+    T removeProduct(T product) throws ProductNotFoundException;
 
-    T updateProduct(T productDto) throws ProductNotFoundException;
+    T updateProduct(T product) throws ProductNotFoundException;
 
     List<T> getAllProducts();
 

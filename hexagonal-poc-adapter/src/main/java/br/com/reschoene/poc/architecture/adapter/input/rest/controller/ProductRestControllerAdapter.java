@@ -1,6 +1,6 @@
 package br.com.reschoene.poc.architecture.adapter.input.rest.controller;
 
-import br.com.reschoene.poc.architecture.adapter.dto.ProductDto;
+import br.com.reschoene.poc.architecture.adapter.input.dto.ProductDto;
 import br.com.reschoene.poc.architecture.adapter.input.rest.error.ResponseError;
 import br.com.reschoene.poc.architecture.domain.model.Product;
 import br.com.reschoene.poc.port.exception.ProductNotFoundException;

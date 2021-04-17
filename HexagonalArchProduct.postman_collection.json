@@ -51,7 +51,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"\",\n    \"code\": \"code 01\",\n    \"description\": \"jogo de cama king size\",\n    \"price\": 54.23,\n    \"brand\": \"mmartan\",\n    \"expirationDate\": \"\",\n    \"manufatoringDate\": \"\"\n}",
+					"raw": "{\n    \"id\": \"\",\n    \"code\": \"code 01\",\n    \"description\": \"jogo de cama king size\",\n    \"price\": 54.23,\n    \"brand\": \"mmartan\",\n    \"expirationDate\": \"2020-10-22\",\n    \"manufacturingDate\": \"2020-10-17\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

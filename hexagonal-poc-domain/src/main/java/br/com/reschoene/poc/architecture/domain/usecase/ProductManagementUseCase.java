@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class ManageProductUseCase implements ProductServicePort<Product> {
+public class ProductManagementUseCase implements ProductServicePort<Product> {
     private final ProductRepositoryPort<Product> productRepositoryPort;
 
     @Override

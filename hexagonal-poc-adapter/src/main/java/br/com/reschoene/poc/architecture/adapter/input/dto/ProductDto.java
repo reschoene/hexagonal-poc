@@ -1,6 +1,7 @@
-package br.com.reschoene.poc.architecture.adapter.dto;
+package br.com.reschoene.poc.architecture.adapter.input.dto;
 
 import br.com.reschoene.poc.architecture.domain.model.Product;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package br.com.reschoene.poc.architecture.adapter.input.cli;
 
-import br.com.reschoene.poc.architecture.adapter.dto.ProductDto;
+import br.com.reschoene.poc.architecture.adapter.input.dto.ProductDto;
 import br.com.reschoene.poc.architecture.adapter.input.cli.controller.ProductCliControllerAdapter;
 import br.com.reschoene.poc.architecture.domain.model.Product;
 import br.com.reschoene.poc.port.input.service.ProductServicePort;
@@ -14,18 +14,13 @@ import java.time.LocalDate;
 @Configuration
 @RequiredArgsConstructor
 @Slf4j
-public class CommandLineAdapter implements CommandLineRunner {
+public class CommandLineTesterApp implements CommandLineRunner {
     private final ProductServicePort<Product> service;
 
     @Override
     public void run(String... args) {
-        executeTest();
-    }
-
-    private void executeTest() {
         log.info("");
-        log.info("------------- COMMAND LINE CLI TESTER ---------");
-        log.info("");
+        log.info("------------- COMMAND LINE CLI TESTER - BEGIN");
 
         var controller = new ProductCliControllerAdapter(service);
 
@@ -55,5 +50,8 @@ public class CommandLineAdapter implements CommandLineRunner {
         log.info("Deleting product...");
         controller.removeProduct(prod);
         log.info("Product was successfully removed");
+
+        log.info("------------- COMMAND LINE CLI TESTER - END");
+        log.info("");
     }
 }
