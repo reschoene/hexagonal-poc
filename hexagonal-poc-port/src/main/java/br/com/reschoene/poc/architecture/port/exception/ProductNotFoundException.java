@@ -1,4 +1,4 @@
-package br.com.reschoene.poc.port.exception;
+package br.com.reschoene.poc.architecture.port.exception;
 
 public class ProductNotFoundException extends Exception{
     public ProductNotFoundException(){

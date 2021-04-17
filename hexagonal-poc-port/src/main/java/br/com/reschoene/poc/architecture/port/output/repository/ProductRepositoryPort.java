@@ -1,4 +1,4 @@
-package br.com.reschoene.poc.port.output.repository;
+package br.com.reschoene.poc.architecture.port.output.repository;
 
 import java.util.List;
 import java.util.Optional;

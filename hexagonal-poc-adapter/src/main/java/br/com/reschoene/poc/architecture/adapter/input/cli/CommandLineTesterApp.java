@@ -3,7 +3,7 @@ package br.com.reschoene.poc.architecture.adapter.input.cli;
 import br.com.reschoene.poc.architecture.adapter.input.dto.ProductDto;
 import br.com.reschoene.poc.architecture.adapter.input.cli.controller.ProductCliControllerAdapter;
 import br.com.reschoene.poc.architecture.domain.model.Product;
-import br.com.reschoene.poc.port.input.service.ProductServicePort;
+import br.com.reschoene.poc.architecture.port.input.service.ProductServicePort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

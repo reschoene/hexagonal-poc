@@ -1,7 +1,7 @@
 package br.com.reschoene.poc.architecture.adapter.output.persistence.jpa;
 
 import br.com.reschoene.poc.architecture.domain.model.Product;
-import br.com.reschoene.poc.port.output.repository.ProductRepositoryPort;
+import br.com.reschoene.poc.architecture.port.output.repository.ProductRepositoryPort;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

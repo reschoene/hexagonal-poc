@@ -1,4 +1,4 @@
-package br.com.reschoene.poc.port.input.ui;
+package br.com.reschoene.poc.architecture.port.input.ui;
 
 public interface ProductUIPort<T, U> {
     U getProductById(Long productId);

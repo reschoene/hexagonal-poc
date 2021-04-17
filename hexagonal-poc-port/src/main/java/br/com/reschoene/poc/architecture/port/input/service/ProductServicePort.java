@@ -1,6 +1,6 @@
-package br.com.reschoene.poc.port.input.service;
+package br.com.reschoene.poc.architecture.port.input.service;
 
-import br.com.reschoene.poc.port.exception.ProductNotFoundException;
+import br.com.reschoene.poc.architecture.port.exception.ProductNotFoundException;
 
 import java.util.List;
 
