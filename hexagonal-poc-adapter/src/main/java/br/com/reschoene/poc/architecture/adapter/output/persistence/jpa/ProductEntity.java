@@ -1,6 +1,6 @@
-package br.com.reschoene.poc.architecture.adapter.output.persistence.JPA;
+package br.com.reschoene.poc.architecture.adapter.output.persistence.jpa;
 
-import br.com.reschoene.poc.port.dto.ProductDto;
+import br.com.reschoene.poc.architecture.domain.model.Product;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,20 +24,20 @@ public class ProductEntity {
     private LocalDate expirationDate;
     private LocalDate manufacturingDate;
 
-    public static ProductEntity fromDto(ProductDto dto){
+    public static ProductEntity fromModel(Product model){
         return ProductEntity
                 .builder()
-                .id(dto.getId())
-                .code(dto.getCode())
-                .description(dto.getDescription())
-                .brand(dto.getBrand())
-                .price(dto.getPrice())
-                .expirationDate(dto.getExpirationDate())
-                .manufacturingDate(dto.getManufacturingDate())
+                .id(model.getId())
+                .code(model.getCode())
+                .description(model.getDescription())
+                .brand(model.getBrand())
+                .price(model.getPrice())
+                .expirationDate(model.getExpirationDate())
+                .manufacturingDate(model.getManufacturingDate())
                 .build();
     }
-    public static ProductDto toDto(ProductEntity productEntity){
-        return ProductDto
+    public static Product toModel(ProductEntity productEntity){
+        return Product
                 .builder()
                 .id(productEntity.getId())
                 .code(productEntity.getCode())

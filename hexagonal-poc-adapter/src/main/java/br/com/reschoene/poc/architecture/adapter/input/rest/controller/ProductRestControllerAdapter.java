@@ -1,8 +1,9 @@
 package br.com.reschoene.poc.architecture.adapter.input.rest.controller;
 
+import br.com.reschoene.poc.architecture.adapter.dto.ProductDto;
 import br.com.reschoene.poc.architecture.adapter.input.rest.error.ResponseError;
+import br.com.reschoene.poc.architecture.domain.model.Product;
 import br.com.reschoene.poc.port.exception.ProductNotFoundException;
-import br.com.reschoene.poc.port.dto.ProductDto;
 import br.com.reschoene.poc.port.input.service.ProductServicePort;
 import br.com.reschoene.poc.port.input.ui.ProductUIPort;
 import lombok.RequiredArgsConstructor;
@@ -11,58 +12,65 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
-public class ProductRestControllerAdapter implements ProductUIPort {
-    private final ProductServicePort productServicePort;
+public class ProductRestControllerAdapter implements ProductUIPort<ProductDto, ResponseEntity<?>> {
+    private final ProductServicePort<Product> productServicePort;
 
     @Override
     @GetMapping("/product/{productId}")
     public ResponseEntity<?> getProductById(@PathVariable Long productId) {
-        ProductDto prod;
+        Product prod;
         try {
             prod = productServicePort.getProductById(productId);
         }
         catch (ProductNotFoundException e){
             return new ResponseEntity<>(new ResponseError(e.getMessage()), HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(prod, HttpStatus.OK);
+        return new ResponseEntity<>(ProductDto.toDto(prod), HttpStatus.OK);
     }
 
     @Override
     @GetMapping("/product")
     public ResponseEntity<List<ProductDto>> getProducts() {
         var prodList = productServicePort.getAllProducts();
-        return new ResponseEntity<>(prodList, HttpStatus.OK);
+        var prodDtoList
+                = prodList.stream()
+                .map(ProductDto::toDto)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(prodDtoList, HttpStatus.OK);
     }
 
     @Override
     @PostMapping("/product")
     public ResponseEntity<ProductDto> addProduct(@RequestBody ProductDto productDto) {
-        productDto = productServicePort.addProduct(productDto);
-        return new ResponseEntity<>(productDto, HttpStatus.CREATED);
+        var product = productServicePort.addProduct(ProductDto.fromDto(productDto));
+        return new ResponseEntity<>(ProductDto.toDto(product), HttpStatus.CREATED);
     }
 
     @Override
     @DeleteMapping("/product")
     public ResponseEntity<?> removeProduct(@RequestBody ProductDto productDto) {
+        Product product;
         try {
-            productDto = productServicePort.removeProduct(productDto);
+            product = productServicePort.removeProduct(ProductDto.fromDto(productDto));
         } catch (ProductNotFoundException e) {
             return new ResponseEntity<>(new ResponseError(e.getMessage()), HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(productDto, HttpStatus.OK);
+        return new ResponseEntity<>(ProductDto.toDto(product), HttpStatus.OK);
     }
 
     @Override
     @PutMapping("/product")
     public ResponseEntity<?> updateProduct(@RequestBody ProductDto productDto) {
+        Product product;
         try {
-            productDto = productServicePort.updateProduct(productDto);
+            product = productServicePort.updateProduct(ProductDto.fromDto(productDto));
         } catch (ProductNotFoundException e) {
             return new ResponseEntity<>(new ResponseError(e.getMessage()), HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(productDto, HttpStatus.OK);
+        return new ResponseEntity<>(ProductDto.toDto(product), HttpStatus.OK);
     }
 }

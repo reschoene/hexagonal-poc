@@ -9,6 +9,7 @@ import java.time.temporal.ChronoUnit;
 @Builder
 @Data
 public class Product {
+    private Long id;
     private String code;
     private String description;
     private String brand;
@@ -16,7 +17,7 @@ public class Product {
     private LocalDate expirationDate;
     private LocalDate manufacturingDate;
 
-    public double calculateSalePrice(){
+    public double getPrice(){
         long daysBetween = ChronoUnit.DAYS.between(expirationDate, manufacturingDate);
 
         double discountPerc = (daysBetween <= 5 ? 0.5 : 0.1);

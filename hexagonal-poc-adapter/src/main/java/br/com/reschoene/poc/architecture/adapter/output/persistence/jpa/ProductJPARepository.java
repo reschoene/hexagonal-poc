@@ -1,4 +1,4 @@
-package br.com.reschoene.poc.architecture.adapter.output.persistence.JPA;
+package br.com.reschoene.poc.architecture.adapter.output.persistence.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,31 +1,31 @@
 package br.com.reschoene.poc.architecture.adapter.input.cli;
 
+import br.com.reschoene.poc.architecture.adapter.dto.ProductDto;
 import br.com.reschoene.poc.architecture.adapter.input.cli.controller.ProductCliControllerAdapter;
-import br.com.reschoene.poc.port.dto.ProductDto;
+import br.com.reschoene.poc.architecture.domain.model.Product;
 import br.com.reschoene.poc.port.input.service.ProductServicePort;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
 @Configuration
 @RequiredArgsConstructor
+@Slf4j
 public class CommandLineAdapter implements CommandLineRunner {
-    private final ProductServicePort service;
+    private final ProductServicePort<Product> service;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         executeTest();
     }
 
-    @Transactional
     private void executeTest() {
-        System.out.println("");
-        System.out.println("");
-        System.out.println("------------- COMMAND LINE CLI TESTER ---------");
-        System.out.println("");
+        log.info("");
+        log.info("------------- COMMAND LINE CLI TESTER ---------");
+        log.info("");
 
         var controller = new ProductCliControllerAdapter(service);
 
@@ -38,22 +38,22 @@ public class CommandLineAdapter implements CommandLineRunner {
                 .expirationDate(LocalDate.now().plusDays(10))
                 .build();
 
-        System.out.println(String.format("Adding product %s...", prod.getCode()));
-        prod = (ProductDto) controller.addProduct(prod);
-        System.out.println(String.format("Product was successful saved (id = %d)", prod.getId()));
+        log.info("Adding product {}...", prod.getCode());
+        prod = controller.addProduct(prod);
+        log.info("Product was successful saved (id = {})", prod.getId());
 
-        System.out.println(String.format("Getting product by id (id = %d)...", prod.getId()));
-        prod = (ProductDto) controller.getProductById(prod.getId());
-        System.out.println(String.format("Received product %s", prod.getCode()));
+        log.info("Getting product by id (id = {})...", prod.getId());
+        prod = controller.getProductById(prod.getId());
+        log.info("Received product {}", prod.getCode());
 
-        System.out.println("Updating product description...");
+        log.info("Updating product description...");
         prod.setDescription("escova de dente 2.0");
         controller.updateProduct(prod);
-        prod = (ProductDto) controller.getProductById(prod.getId());
-        System.out.println(String.format("New product descrition: %s", prod.getDescription()));
+        prod = controller.getProductById(prod.getId());
+        log.info("New product descrition: {}", prod.getDescription());
 
-        System.out.println("Deleting product...");
+        log.info("Deleting product...");
         controller.removeProduct(prod);
-        prod = (ProductDto) controller.getProductById(prod.getId());
+        log.info("Product was successfully removed");
     }
 }

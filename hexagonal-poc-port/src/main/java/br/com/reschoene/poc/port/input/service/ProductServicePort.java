@@ -1,18 +1,17 @@
 package br.com.reschoene.poc.port.input.service;
 
-import br.com.reschoene.poc.port.dto.ProductDto;
 import br.com.reschoene.poc.port.exception.ProductNotFoundException;
 
 import java.util.List;
 
-public interface ProductServicePort {
-    ProductDto addProduct(ProductDto productDto);
+public interface ProductServicePort<T> {
+    T addProduct(T product);
 
-    ProductDto removeProduct(ProductDto productDto) throws ProductNotFoundException;
+    T removeProduct(T productDto) throws ProductNotFoundException;
 
-    ProductDto updateProduct(ProductDto productDto) throws ProductNotFoundException;
+    T updateProduct(T productDto) throws ProductNotFoundException;
 
-    List<ProductDto> getAllProducts();
+    List<T> getAllProducts();
 
-    ProductDto getProductById(Long productId) throws ProductNotFoundException;
+    T getProductById(Long productId) throws ProductNotFoundException;
 }

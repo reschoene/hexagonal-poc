@@ -1,46 +1,46 @@
 package br.com.reschoene.poc.architecture.domain.usecase;
 
-import br.com.reschoene.poc.port.dto.ProductDto;
+import br.com.reschoene.poc.architecture.domain.model.Product;
 import br.com.reschoene.poc.port.exception.ProductNotFoundException;
 import br.com.reschoene.poc.port.input.service.ProductServicePort;
-import br.com.reschoene.poc.port.repository.ProductRepositoryPort;
+import br.com.reschoene.poc.port.output.repository.ProductRepositoryPort;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-public class ManageProductUseCase implements ProductServicePort {
-    private final ProductRepositoryPort productRepositoryPort;
+public class ManageProductUseCase implements ProductServicePort<Product> {
+    private final ProductRepositoryPort<Product> productRepositoryPort;
 
     @Override
-    public ProductDto addProduct(ProductDto productDto) {
-        return productRepositoryPort.addProduct(productDto);
+    public Product addProduct(Product product) {
+        return productRepositoryPort.addProduct(product);
     }
 
     @Override
-    public ProductDto removeProduct(ProductDto productDto) throws ProductNotFoundException {
-        if (productRepositoryPort.getProductById(productDto.getId()).isEmpty())
-            throw new ProductNotFoundException("Product not found");
+    public Product removeProduct(Product product) throws ProductNotFoundException {
+        if (productRepositoryPort.getProductById(product.getId()).isEmpty())
+            throw new ProductNotFoundException();
 
-        return productRepositoryPort.removeProduct(productDto);
+        return productRepositoryPort.removeProduct(product);
     }
 
     @Override
-    public ProductDto updateProduct(ProductDto productDto) throws ProductNotFoundException {
-        if (productRepositoryPort.getProductById(productDto.getId()).isEmpty())
-            throw new ProductNotFoundException("Product not found");
+    public Product updateProduct(Product product) throws ProductNotFoundException {
+        if (productRepositoryPort.getProductById(product.getId()).isEmpty())
+            throw new ProductNotFoundException();
 
-        return productRepositoryPort.updateProduct(productDto);
+        return productRepositoryPort.updateProduct(product);
     }
 
     @Override
-    public List<ProductDto> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productRepositoryPort.getAllProducts();
     }
 
     @Override
-    public ProductDto getProductById(Long productId) throws ProductNotFoundException {
+    public Product getProductById(Long productId) throws ProductNotFoundException {
         return productRepositoryPort.getProductById(productId)
-                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
+                .orElseThrow(ProductNotFoundException::new);
     }
 }
