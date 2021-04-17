@@ -1,7 +1,6 @@
 package br.com.reschoene.poc.architecture.adapter.input.dto;
 
 import br.com.reschoene.poc.architecture.domain.model.Product;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +13,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 public class ProductDto {
-    private Long id;
+    private long id;
     private String code;
     private String description;
     private double price;

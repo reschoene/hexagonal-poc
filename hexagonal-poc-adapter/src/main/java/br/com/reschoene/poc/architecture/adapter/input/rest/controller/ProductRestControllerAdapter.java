@@ -21,7 +21,7 @@ public class ProductRestControllerAdapter implements ProductUIPort<ProductDto, R
 
     @Override
     @GetMapping("/product/{productId}")
-    public ResponseEntity<?> getProductById(@PathVariable Long productId) {
+    public ResponseEntity<?> getProductById(@PathVariable long productId) {
         Product prod;
         try {
             prod = productServicePort.getProductById(productId);

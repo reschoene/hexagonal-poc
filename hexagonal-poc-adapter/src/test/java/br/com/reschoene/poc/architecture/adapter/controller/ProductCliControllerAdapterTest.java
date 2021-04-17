@@ -1,5 +1,7 @@
-package br.com.reschoene.poc.architecture.adapter;
+package br.com.reschoene.poc.architecture.adapter.controller;
 
+import br.com.reschoene.poc.architecture.adapter.helper.ProductCreator;
+import br.com.reschoene.poc.architecture.adapter.helper.ProductDtoCreator;
 import br.com.reschoene.poc.architecture.adapter.input.cli.controller.ProductCliControllerAdapter;
 import br.com.reschoene.poc.architecture.domain.model.Product;
 import br.com.reschoene.poc.architecture.port.exception.ProductNotFoundException;

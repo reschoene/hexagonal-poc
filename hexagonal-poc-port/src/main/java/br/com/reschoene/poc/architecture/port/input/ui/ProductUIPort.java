@@ -1,7 +1,7 @@
 package br.com.reschoene.poc.architecture.port.input.ui;
 
 public interface ProductUIPort<T, U> {
-    U getProductById(Long productId);
+    U getProductById(long productId);
     Object getProducts();
     U addProduct(T productDto);
     U removeProduct(T productDto);

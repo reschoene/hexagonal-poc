@@ -17,7 +17,7 @@ public class ProductCliControllerAdapter implements ProductUIPort<ProductDto, Pr
     private final ProductServicePort<Product> productServicePort;
 
     @Override
-    public ProductDto getProductById(Long productId) {
+    public ProductDto getProductById(long productId) {
         ProductDto dto = null;
         try {
             var product = productServicePort.getProductById(productId);

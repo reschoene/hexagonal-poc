@@ -8,12 +8,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class PortTest {
+class PortTest {
     @Test
     @DisplayName("when ProductNotFound is thrown its text is correct")
     void whenProductNotFoundIsThrown_ItsTextIsCorrect() {
         Assertions.assertThatExceptionOfType(ProductNotFoundException.class)
-                .isThrownBy(() -> throwException())
+                .isThrownBy(this::throwException)
                 .withMessageContaining("Product not found");
     }
 

@@ -1,4 +1,4 @@
-package br.com.reschoene.poc.architecture.adapter;
+package br.com.reschoene.poc.architecture.adapter.helper;
 
 import br.com.reschoene.poc.architecture.adapter.input.dto.ProductDto;
 

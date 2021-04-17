@@ -70,7 +70,6 @@ class ProductManagementUseCaseTest {
                 .isNotNull();
 
         Assertions.assertThat(product.getId())
-                .isNotNull()
                 .isEqualTo(1L);
     }
 
@@ -90,7 +89,6 @@ class ProductManagementUseCaseTest {
                 .isNotNull();
 
         Assertions.assertThat(product.getId())
-                .isNotNull()
                 .isEqualTo(1L);
 
         Assertions.assertThat(product.getDescription())
@@ -122,7 +120,6 @@ class ProductManagementUseCaseTest {
                 .isNotNull();
 
         Assertions.assertThat(product.getId())
-                .isNotNull()
                 .isEqualTo(1L);
 
         Assertions.assertThat(product.getDescription())
