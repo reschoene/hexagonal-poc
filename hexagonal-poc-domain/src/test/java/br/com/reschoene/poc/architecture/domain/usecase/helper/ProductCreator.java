@@ -1,4 +1,4 @@
-package br.com.reschoene.poc.architecture.domain.usecase;
+package br.com.reschoene.poc.architecture.domain.usecase.helper;
 
 import br.com.reschoene.poc.architecture.domain.model.Product;
 

@@ -1,6 +1,8 @@
-package br.com.reschoene.poc.architecture.domain.usecase;
+package br.com.reschoene.poc.architecture.domain.usecase.usecase;
 
 import br.com.reschoene.poc.architecture.domain.model.Product;
+import br.com.reschoene.poc.architecture.domain.usecase.helper.ProductCreator;
+import br.com.reschoene.poc.architecture.domain.usecase.ProductManagementUseCase;
 import br.com.reschoene.poc.architecture.port.exception.ProductNotFoundException;
 import br.com.reschoene.poc.architecture.port.output.repository.ProductRepositoryPort;
 import org.assertj.core.api.Assertions;

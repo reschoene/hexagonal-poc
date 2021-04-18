@@ -40,7 +40,6 @@ public class ProductJPAAdapter implements ProductRepositoryPort<Product> {
 
     @Override
     public Product updateProduct(Product product) {
-        var entity = ProductEntity.fromModel(product);
-        return ProductEntity.toModel(jpaRepository.save(entity));
+        return addProduct(product);
     }
 }

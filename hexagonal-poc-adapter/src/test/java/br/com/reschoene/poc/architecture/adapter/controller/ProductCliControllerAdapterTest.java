@@ -64,7 +64,6 @@ class ProductCliControllerAdapterTest {
                 .isNotNull();
 
         Assertions.assertThat(product.getId())
-                .isNotNull()
                 .isEqualTo(1L);
     }
 
@@ -81,7 +80,6 @@ class ProductCliControllerAdapterTest {
                 .isNotNull();
 
         Assertions.assertThat(product.getId())
-                .isNotNull()
                 .isEqualTo(1L);
 
         Assertions.assertThat(product.getDescription())
@@ -103,7 +101,6 @@ class ProductCliControllerAdapterTest {
                 .isNotNull();
 
         Assertions.assertThat(product.getId())
-                .isNotNull()
                 .isEqualTo(1L);
 
         Assertions.assertThat(product.getDescription())

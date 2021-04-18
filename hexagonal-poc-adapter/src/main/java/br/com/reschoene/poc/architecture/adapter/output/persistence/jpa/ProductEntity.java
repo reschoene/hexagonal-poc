@@ -10,13 +10,12 @@ import java.time.LocalDate;
 @Table(name="Product")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @Builder
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String code;
     private String description;
     private String brand;

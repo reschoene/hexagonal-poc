@@ -4,10 +4,7 @@ import br.com.reschoene.poc.architecture.port.exception.ProductNotFoundException
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 
-@ExtendWith(MockitoExtension.class)
 class PortTest {
     @Test
     @DisplayName("when ProductNotFound is thrown its text is correct")
