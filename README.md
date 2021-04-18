@@ -14,7 +14,19 @@ A POC foi desenvolvida em Java e consiste em um projeto maven multi-módulos, se
 + Módulo responsável por definir os contratos que serão utilizados pelos demais módulos. Trata-se das interfaces que serão implementadas pelos adapters.  
 
 #### Hexagonal-poc-adapter
-+ É neste módulo que ficam as implementações dos adaptadores. Esta camada é responsável por prover as implementações das portas, podendo-se utilizar de diversas tecnologias e frameworks.
++ É neste módulo que ficam as implementações dos adaptadores. Esta camada é responsável por prover as implementações das portas, podendo-se utilizar de diversas tecnologias e frameworks. 
+
+### Passos para compilar e testar o projeto
+1. Certifique-se que esteja no diretório `hexagonal-poc-app`
+2. Execute o comando a seguir para baixar as dependências do projeto, executar seus testes automatizados e compilar o mesmo: 
+   `./mvnw clean package`
+3. Entre no diretório que contém a aplicação rest:
+   `cd hexagonal-poc-adapter`
+4. Execute o comando a seguir para iniciar a execução da aplicação na porta 8080:
+   `./mvnw spring-boot:run`
+5. Na raíz do projeto disponibilizei o arquivo `HexagonalArch.postman_collection.json`, ele contem uma collection do Postman. Importe esta collection no Postman para testar os endpoints do serviço REST.    
+
+
 
 
 
